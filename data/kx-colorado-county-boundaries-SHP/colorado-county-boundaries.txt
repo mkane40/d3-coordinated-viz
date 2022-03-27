@@ -1,0 +1,28 @@
+========================================================================
+ Colorado County Boundaries
+------------------------------------------------------------------------
+ https://koordinates.com/layer/103243-colorado-county-boundaries/
+========================================================================
+From: State of Colorado
+
+Description:
+  ​
+
+CRS: WGS 84
+
+------------------------------------------------------------------------
+ Processing steps applied by Koordinates
+------------------------------------------------------------------------
+
+- imported to Koordinates in Esri JSON format on 14 Jun 2019
+- 6 invalid geometries fixed at import time 
+    (see https://koordinates.com/layer/103243-colorado-county-boundaries/history/)
+- reprojected from NAD83 to WGS 84
+- converted by Koordinates to Shapefile on 27 Mar 2022 (reference #2452600)
+
+====================
+No license specified
+====================
+
+No license was specified for this layer. This could mean default rights under copyright law for your legal jurisdiction may apply. Please check with Koordinates if you're unsure of your right to access and use this layer.
+

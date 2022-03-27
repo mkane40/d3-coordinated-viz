@@ -1,0 +1,28 @@
+========================================================================
+ US State Boundaries
+------------------------------------------------------------------------
+ https://usgs.koordinates.com/layer/10829-us-state-boundaries/
+========================================================================
+From: U.S. Geological Survey
+
+Description:
+  Boundary lines for States of the United States of America.
+
+Region: United States of America
+
+CRS: WGS 84
+
+------------------------------------------------------------------------
+ Processing steps applied by USGS Data Service
+------------------------------------------------------------------------
+
+- imported to USGS Data Service in Shapefile format on 23 Aug 2016
+- reprojected from NAD83 to WGS 84
+- converted by USGS Data Service to Shapefile on 25 Mar 2022 (reference #2452006)
+
+====================
+No license specified
+====================
+
+No license was specified for this layer. This could mean default rights under copyright law for your legal jurisdiction may apply. Please check with USGS Data Service if you're unsure of your right to access and use this layer.
+

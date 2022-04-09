@@ -1,0 +1,65 @@
+id,LABEL,Melanoma of the Skin,Lung & Bronchus,Prostate,Breast,Colorectal
+1,Adams,69,207,166,287,166
+2,Alamosa,3,5,7,10,5
+3,Arapahoe,133,275,263,481,212
+4,Archuleta,4,6,6,13,5
+5,Baca,3,3,3,3,3
+6,Bent,3,4,3,3,3
+7,Boulder,104,98,154,245,102
+8,Broomfield,21,25,31,49,18
+9,Chaffee,11,10,20,19,9
+10,Cheyenne,3,3,3,3,3
+11,Clear Creek,5,4,7,8,4
+12,Conejos,3,3,4,3,4
+13,Costilla,3,3,3,3,3
+14,Crowley,3,3,3,3,3
+15,Custer,3,3,6,3,4
+16,Delta,8,24,19,25,19
+17,Denver,131,259,280,457,232
+18,Dolores,3,3,3,3,3
+19,Douglas,100,98,133,275,85
+20,Eagle,13,9,33,26,13
+21,El Paso,164,279,358,472,215
+22,Elbert,10,12,11,21,8
+23,Fremont,17,37,29,41,24
+24,Garfield,15,30,39,34,18
+25,Gilpin,3,3,3,4,3
+26,Grand,3,4,9,10,6
+27,Gunnison,8,4,9,8,4
+28,Hinsdale,3,3,3,3,3
+29,Huerfano,3,4,5,6,4
+30,Jackson,3,3,3,3,3
+31,Jefferson,170,291,342,487,220
+32,Kiowa,3,3,3,3,3
+33,Kit Carson,3,5,4,5,6
+34,La Plata,14,15,35,45,18
+35,Lake,3,3,3,3,3
+36,Larimer,61,133,240,266,113
+37,Las Animas,3,9,9,12,10
+38,Lincoln,3,5,3,4,3
+39,Logan,3,12,11,13,9
+40,Mesa,39,109,90,122,66
+41,Mineral,3,3,3,3,3
+42,Moffat,3,7,7,8,4
+43,Montezuma,5,15,12,19,9
+44,Montrose,19,28,22,38,20
+45,Morgan,5,15,14,17,10
+46,Otero,4,10,12,13,10
+47,Ouray,3,3,4,4,3
+48,Park,5,9,12,11,4
+49,Phillips,3,3,3,4,3
+50,Pitkin,6,5,17,16,5
+51,Prowers,3,10,8,8,9
+52,Pueblo,32,107,103,127,84
+53,Rio Blanco,3,3,4,4,3
+54,Rio Grande,3,5,8,6,5
+55,Routt,6,7,16,21,4
+56,Saguache,3,3,5,4,3
+57,San Juan,3,3,3,3,3
+58,San Miguel,3,3,5,4,3
+59,Sedgwick,3,3,3,3,3
+60,Summit,6,5,14,16,4
+61,Teller,7,14,22,20,9
+62,Washington,3,3,5,3,3
+63,Weld,62,125,133,180,97
+64,Yuma,3,4,5,8,7

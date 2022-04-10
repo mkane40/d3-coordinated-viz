@@ -26,6 +26,9 @@
         headerInnerWidth = headerWidth - leftPadding - rightPadding,
         headerInnerHeight = headerHeight - headertopBottomPadding * 2
 
+
+
+        
 //begin script when window loads
 window.onload = setMap();
 
@@ -43,6 +46,14 @@ function setMap(){
         .attr("class", "map")
         .attr("width", width)
         .attr("height", height)
+        .call(d3.zoom()
+        .scaleExtent([1,4])
+        .translateExtent([[0,0],[width,height]])
+        .on("zoom", function () {
+            map.attr("transform", d3.event.transform)
+    }))
+        .append("g");
+    
 
     //create Albers equal area conic projection centered on France
     var projection = d3.geoConicEqualArea()
@@ -88,6 +99,7 @@ function setMap(){
             createDropDown(csvData, coloradoCounties);
         };
 }; //end of setMap()
+
 
 //function to create color scale generator
 function makeColorScale(data){
@@ -387,8 +399,6 @@ function moveLabel(){
         .style("left", x + "px")
         .style("top", y + "px");
 };
-
-
 
 
 })(); //last wrap

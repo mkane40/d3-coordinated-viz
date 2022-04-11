@@ -26,8 +26,6 @@
         headerInnerWidth = headerWidth - leftPadding - rightPadding,
         headerInnerHeight = headerHeight - headertopBottomPadding * 2
 
-
-
         
 //begin script when window loads
 window.onload = setMap();
@@ -97,6 +95,7 @@ function setMap(){
             //add coordinated visualization to the map
             setChart(csvData, colorScale, choropleth);
             createDropDown(csvData, coloradoCounties);
+            setTitle();
         };
 }; //end of setMap()
 
@@ -240,10 +239,17 @@ function setChart(csvData, colorScale, choropleth){
 
     //below Example 2.8...create a text element for the chart title
     var chartTitle = chart.append("text")
-        .attr("x", 80)
+        .attr("x", 300)
         .attr("y", 40)
+        .text("Common Cancer Profile Over Colorado")
+        .attr("class", "chartTitle");
+
+    chart.append("text")
+        .attr("x", 300)
+        .attr("y", 60)
         .attr("class", "chartTitle")
-        .text("Cancer type " + expressed[3] + " in each county");
+        .text("Average Annual Count Per County")
+    
 
     //create vertical axis generator
     var yAxis = d3.axisLeft(yScale)
@@ -296,7 +302,7 @@ function changeAttribute(attribute, csvData){
     //recolor enumeration units
     var counties = d3.selectAll(".counties")
         .transition()
-        .duration(1000)
+        .duration(500)
         .style("fill", function(d){
             return choropleth(d.properties, colorScale)
         });
@@ -324,7 +330,7 @@ function updateChart(bars, n, colorScale){
     })
     //size/resize bars
     .attr("height", function(d, i){
-        return 463 - yScale(parseFloat(d[expressed]));
+        return 465 - yScale(parseFloat(d[expressed]));
     })
     .attr("y", function(d, i){
         return yScale(parseFloat(d[expressed])) + topBottomPadding;
@@ -334,8 +340,6 @@ function updateChart(bars, n, colorScale){
         return choropleth(d, colorScale);
     });
     
-    var chartTitle = d3.select(".chartTitle")
-        .text("Average Annual Count of Cancer Type by County");
 
 };
     
@@ -345,7 +349,8 @@ function updateChart(bars, n, colorScale){
     var selected = d3.selectAll("." + props.LABEL)
         .style("stroke", "orange")
         .style("stroke-width", "2");
-    };
+    setLabel(props);
+};
 
 //function to reset the element style on mouseout
 function dehighlight(props){
@@ -372,15 +377,19 @@ function dehighlight(props){
 
 //function to create dynamic label
 function setLabel(props){
-    var labelAttribute = "<h1>" + props[expressed] + "</h1><b>" + expressed + "</b>";
+    //label content
+    var labelAttribute = "<h1>" + props[expressed] +
+        "</h1><b>" + expressed + " Cancer</b>";
+
+    //create info label div
     var infolabel = d3.select("body")
         .append("div")
         .attr("class", "infolabel")
         .attr("id", props.LABEL + "_label")
-        .html(labelAttribute)
-    var stateName = infolabel.append("div")
+        .html(labelAttribute);
+    var regionName = infolabel.append("div")
         .attr("class", "labelname")
-        .html(props.LABEL);
+        .html("County: " + props.LABEL);
 };
 
 //Example 2.8 line 1...function to move info label with mouse

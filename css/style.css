@@ -16,27 +16,29 @@ body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
 .map {
     border: medium solid #999;
     margin: 10px 0 0 20px;
+    box-shadow: 2px 2px 4px #245C73;
 }
 
 .chart {
     float: right;
     margin: 7px 20px 0 0;
+    box-shadow: 2px 2px 4px #245C73;
 }
 
 .chartTitle {
     font-family: monospace;
     font-size: 1em;
     font-weight: bold;
+    word-wrap: normal;
 }
 
 .chartBackground {
-    fill: rgba(128,128,128,.2);
+    fill: rgba(255, 255, 255, 0.2);
 }
 
 .chartFrame {
     fill: none;
-    stroke: rgb(150, 150, 150);
-    stroke-width: 3px;
+
     shape-rendering: crispEdges;
 }
 
@@ -64,7 +66,7 @@ body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
     font-weight: bold;
     padding: 2px;
     border: 1px solid #999;
-    box-shadow: 2px 2px 4px #999;
+    box-shadow: 2px 2px 4px #245C73;
 }
 
 option {
@@ -74,69 +76,24 @@ option {
 
 .infolabel {
     position: absolute;
-    height: 50px;
+    height: 75px;
     min-width: 100px;
-    color: #fff;
+    color: #FFA500;
+    font-family:"avenir next", Arial, sans-serif;
     background-color: #000;
-    border: solid thin #fff;
-    padding: 5px 10px;
+    padding: 2px 5px;
+    border-radius: 5px;
     top: -75px;
-    opacity: .5;
+    opacity: .6;
 }
 
 .infolabel h1 {
     margin: 0 20px 0 0;
     padding: 0;
-    display: inline-block;
-    line-height: 1em;
-}
-
-
-.infolabel_ {
-line-height: 1.5;
-font-weight: 400;
-font-family:"avenir next", Arial, sans-serif;
-padding: 6px;
-background: rgba(0, 0, 0, 0.6);
-color: #FFA500;
-border-radius: 1px;
-pointer-events: none;
-}
-
-.infolabel_:after {
-    line-height: 1.5;
     font-weight: 400;
     font-family:"avenir next", Arial, sans-serif;
-    padding: 6px;
-    background: rgba(0, 0, 0, 0.6);
-    color: #FFA500;
-    border-radius: 1px;
-    pointer-events: none;
-}
-
-
-.demo-container{
-    display:flex;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    
-
-}
-
-.demo-container a button{
-    border:0;
-    padding:12px 32px 12px 32px;
-    letter-spacing: 1.2px;
-    background:#245C73;
-    color:#f0f0f0;
-    border-radius:30px;
-}
-
-.demo-container a:hover button{
-    cursor: pointer;
-    background: orange;
-    color:white;
+    display: inline-block;
+    line-height: 1em;
 }
 
 
@@ -148,15 +105,12 @@ footer{
 
 .citation {
     word-wrap: break-word;
-    background: rgba(0,0,0,.02);
+    background: rgba(0,0,0,.6);
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 3px;
-    color: #969696;
-    font-size: 13px;
-    line-height: 15px;
-    margin-top: -6px;
-    overflow: hidden;
-    padding: 5px 18px;
-    white-space: pre-wrap;
-    
+    color: #ffffff;
+    font-size: 15px;
+    padding: 10px;
+ 
 }
+

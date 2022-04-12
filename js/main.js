@@ -37,8 +37,8 @@ function setMap(){
     var width = window.innerWidth * 0.5,
         height = 460;
 
-    
     //style container
+
     var map = d3.select("body")
         .append("svg")
         .attr("class", "map")
@@ -53,7 +53,7 @@ function setMap(){
         .append("g");
     
 
-    //create projection
+    //create  projection centered on France
     var projection = d3.geoConicEqualArea()
         .center([-105.6, 38.8])
         .rotate([0, 0, 0])
@@ -72,7 +72,7 @@ function setMap(){
         .await(callback);
 
         function callback(error, csvData, us, colorado){
-            //translate toTopoJSON
+            //translate TopoJSON
             var usStates = topojson.feature(us, us.objects.usstateboundaries),
             coloradoCounties = topojson.feature(colorado, colorado.objects.coloradocountyboundaries).features;
 
@@ -88,6 +88,8 @@ function setMap(){
 
             //create the color scale
             var colorScale = makeColorScale(csvData);
+
+            //enumeration units to the map
             setEnumerationUnits(coloradoCounties, map, path, colorScale, choropleth);
 
             //add coordinated visualization to the map
@@ -152,12 +154,11 @@ function choropleth(props, colorScale){
 function joinData(coloradoCounties, csvData){
     //loop through csv to assign each set of csv attribute values to geojson region
     for (var i=0; i<csvData.length; i++){
-        var csvCounty = csvData[i];
-        var csvKey = csvCounty.LABEL;
+        var csvCounty = csvData[i]; 
+        var csvKey = csvCounty.LABEL; 
 
-        //loop through geojson regions to find correct region
         for (var a=0; a<coloradoCounties.length; a++){
-            var geojsonProps = coloradoCounties[a].properties; //the current region geojson properties
+            var geojsonProps = coloradoCounties[a].properties; 
             var geojsonKey = geojsonProps.LABEL; //the geojson primary key
             //where primary keys match, transfer csv data to geojson properties object
             if (geojsonKey == csvKey){
@@ -185,6 +186,7 @@ function setEnumerationUnits(coloradoCounties, map, path, colorScale){
         })
         .attr("d", path)
         .style("fill", function(d){
+            // return colorScale(d.properties[expressed]);
             return choropleth(d.properties, colorScale);
         })
         .on("mouseover", function(d){
@@ -215,6 +217,7 @@ function setChart(csvData, colorScale, choropleth){
         .attr("height", chartInnerHeight)
         .attr("transform", chartTranslate);
 
+    //set bars for each province
     var bars = chart.selectAll(".bar")
         .data(csvData)
         .enter()
@@ -398,7 +401,7 @@ function moveLabel(){
 // chart 
 // here
 // down
-// credit https://d3-graph-gallery.com/graph/treemap_basic.html
+// credit d3-graph-gallery.com/graph/treemap_basic
 
 
 // set the dimensions and margins of the graph
@@ -419,13 +422,14 @@ var svg = d3.select("body")
 // Read data
 d3.csv("/data/cancer_cases_2020.csv", function(data) {
 
-  // stratify the data
+  // stratify the data: reformatting for d3.js
   var root = d3.stratify()
-    .id(function(d) { return d.name; })  
+    .id(function(d) { return d.name; })   
     .parentId(function(d) { return d.parent; })   
     (data);
-  root.sum(function(d) { return +d.value })   
+  root.sum(function(d) { return +d.value })   // Compute the numeric value for each entity
 
+  
   // The coordinates are added to the root object above
   d3.treemap()
     .size([width, height])
@@ -452,7 +456,7 @@ d3.csv("/data/cancer_cases_2020.csv", function(data) {
     .data(root.leaves())
     .enter()
     .append("text")
-      .attr("x", function(d){ return d.x0+10})    
+      .attr("x", function(d){ return d.x0+10})   
       .attr("y", function(d){ return d.y0+20})   
       .text(function(d){ return d.data.name + " - " + d.data.value + " Million"})
       .attr("font-size", "12px")

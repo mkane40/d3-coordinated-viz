@@ -1,0 +1,8 @@
+name,parent,value,color
+Origin,,,
+Breast,Origin,2.26,#F1A7F5
+Lung,Origin,2.21,#ffffff
+Prostate,Origin,1.41,#5FCCF5
+Skin,Origin,1.20,#000000
+Colorectal,Origin,1.93,#1701B0
+Stomach,Origin,1.09,#c9d6ff

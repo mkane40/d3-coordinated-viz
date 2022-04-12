@@ -1,5 +1,10 @@
-body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
-
+body {
+    color: #000;
+    font-family: 'Play', sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing:0.2px;
+}
 
 .states {
     fill: #FFF;
@@ -14,7 +19,6 @@ body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
 }
 
 .map {
-    border: medium solid #999;
     margin: 10px 0 0 20px;
     box-shadow: 2px 2px 4px #245C73;
 }
@@ -58,8 +62,8 @@ body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
 
 .dropdown {
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 5px;
+    left: 30px;
     z-index: 10;
     font-family: monospace;
     font-size: 1em;
@@ -67,6 +71,12 @@ body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
     padding: 2px;
     border: 1px solid #999;
     box-shadow: 2px 2px 4px #245C73;
+}
+
+.my_dataviz {
+    position: absolute;
+    bottom: 70px;
+    right: 7em;
 }
 
 option {
@@ -111,6 +121,4 @@ footer{
     color: #ffffff;
     font-size: 15px;
     padding: 10px;
- 
 }
-

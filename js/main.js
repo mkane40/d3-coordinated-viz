@@ -37,8 +37,8 @@ function setMap(){
     var width = window.innerWidth * 0.5,
         height = 460;
 
+    
     //style container
-
     var map = d3.select("body")
         .append("svg")
         .attr("class", "map")
@@ -53,7 +53,7 @@ function setMap(){
         .append("g");
     
 
-    //create Albers equal area conic projection centered on France
+    //create projection
     var projection = d3.geoConicEqualArea()
         .center([-105.6, 38.8])
         .rotate([0, 0, 0])
@@ -72,7 +72,7 @@ function setMap(){
         .await(callback);
 
         function callback(error, csvData, us, colorado){
-            //translate europe TopoJSON
+            //translate toTopoJSON
             var usStates = topojson.feature(us, us.objects.usstateboundaries),
             coloradoCounties = topojson.feature(colorado, colorado.objects.coloradocountyboundaries).features;
 
@@ -88,8 +88,6 @@ function setMap(){
 
             //create the color scale
             var colorScale = makeColorScale(csvData);
-
-            //Example 1.3 line 24...add enumeration units to the map
             setEnumerationUnits(coloradoCounties, map, path, colorScale, choropleth);
 
             //add coordinated visualization to the map
@@ -154,8 +152,8 @@ function choropleth(props, colorScale){
 function joinData(coloradoCounties, csvData){
     //loop through csv to assign each set of csv attribute values to geojson region
     for (var i=0; i<csvData.length; i++){
-        var csvCounty = csvData[i]; //the current region
-        var csvKey = csvCounty.LABEL; //the CSV primary key
+        var csvCounty = csvData[i];
+        var csvKey = csvCounty.LABEL;
 
         //loop through geojson regions to find correct region
         for (var a=0; a<coloradoCounties.length; a++){
@@ -187,7 +185,6 @@ function setEnumerationUnits(coloradoCounties, map, path, colorScale){
         })
         .attr("d", path)
         .style("fill", function(d){
-            // return colorScale(d.properties[expressed]);
             return choropleth(d.properties, colorScale);
         })
         .on("mouseover", function(d){
@@ -218,7 +215,6 @@ function setChart(csvData, colorScale, choropleth){
         .attr("height", chartInnerHeight)
         .attr("transform", chartTranslate);
 
-    //Example 2.4 line 8...set bars for each province
     var bars = chart.selectAll(".bar")
         .data(csvData)
         .enter()
@@ -237,19 +233,7 @@ function setChart(csvData, colorScale, choropleth){
     var desc = bars.append("desc")
         .text('{"stroke": "none", "stroke-width": "0px"}');
 
-    //below Example 2.8...create a text element for the chart title
-    var chartTitle = chart.append("text")
-        .attr("x", 300)
-        .attr("y", 40)
-        .text("Common Cancer Profile Over Colorado")
-        .attr("class", "chartTitle");
 
-    chart.append("text")
-        .attr("x", 300)
-        .attr("y", 60)
-        .attr("class", "chartTitle")
-        .text("Average Annual Count Per County")
-    
 
     //create vertical axis generator
     var yAxis = d3.axisLeft(yScale)
@@ -392,7 +376,7 @@ function setLabel(props){
         .html("County: " + props.LABEL);
 };
 
-//Example 2.8 line 1...function to move info label with mouse
+//function to move info label with mouse
 function moveLabel(){
     var labelWidth = d3.select(".infolabel")
         .node()
@@ -409,5 +393,77 @@ function moveLabel(){
         .style("top", y + "px");
 };
 
+
+
+// chart 
+// here
+// down
+// credit https://d3-graph-gallery.com/graph/treemap_basic.html
+
+
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+  width = 1400 - margin.left - margin.right,
+  height = 100 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("body")
+    .append("svg")
+    .attr("class", "my_dataviz")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+  .attr("transform",
+        "translate(" + margin.right + "," + margin.bottom + ")");
+
+// Read data
+d3.csv("/data/cancer_cases_2020.csv", function(data) {
+
+  // stratify the data
+  var root = d3.stratify()
+    .id(function(d) { return d.name; })  
+    .parentId(function(d) { return d.parent; })   
+    (data);
+  root.sum(function(d) { return +d.value })   
+
+  // The coordinates are added to the root object above
+  d3.treemap()
+    .size([width, height])
+    .padding(4)
+    (root)
+
+  // use this information to add rectangles:
+  svg
+    .selectAll("rect")
+    .data(root.leaves())
+    .enter()
+    .append("rect")
+      .attr('x', function (d) { return d.x0; })
+      .attr('y', function (d) { return d.y0; })
+      .attr('width', function (d) { return d.x1 - d.x0; })
+      .attr('height', function (d) { return d.y1 - d.y0; })
+      .style("stroke", "grey")
+      .attr("fill-opacity","0.8")
+      .style("fill", "#245C73")
+
+  // and to add the text labels
+  svg
+    .selectAll("text")
+    .data(root.leaves())
+    .enter()
+    .append("text")
+      .attr("x", function(d){ return d.x0+10})    
+      .attr("y", function(d){ return d.y0+20})   
+      .text(function(d){ return d.data.name + " - " + d.data.value + " Million"})
+      .attr("font-size", "12px")
+      .attr("fill", function(d){
+        if (d.id == 'Breast') {return d.data.color}
+        if (d.id == 'Lung') {return d.data.color}
+        if (d.id == 'Prostate') {return d.data.color}
+        if (d.id == 'Skin') {return d.data.color}
+        if (d.id == 'Stomach') {return d.data.color}
+        if (d.id == 'Colorectal') {return d.data.color}
+      ;})
+})
 
 })(); //last wrap

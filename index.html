@@ -16,21 +16,22 @@
   <link rel="stylesheet" href="css/styles.css">
   <meta name="theme-color" content="#fafafa">
 </head>
-<section>
-  <p class="text-center my-5"> look at this</p>
+
+<section class="container my-2">
+  <div class="row justify-content-center">
+      <div class="col-lg-8">
+      <p class="display-8"><h5>Average Annual Cancer Count in Colorado between 2014 & 2018</h5>Using the drop down you can visualize this data by cancer type including: Melanoma of the Skin, Lung & Bronchus, Prostate, Breast, & Colorectal.  The Tree Map at the bottom of the page shows the most common cancer types in 2020. </p>
+
+      </div>
+  </div>
 </section>
-
 <body>
-
-
-
   <footer class = "citation text-center"> 
-    <p>Resources: <em>statecancerprofiles.cancer.gov / </em> Created by Mackenzie Kane 2022 / Download Raw Data Here: <i class="bi bi-filetype-csv"></i>
+    <p>Resources: <a href="https://www.statecancerprofiles.cancer.gov/index.html">statecancerprofiles.cancer.gov</a> | Created by Mackenzie Kane 2022 | Download Raw Data Here: <i class="bi bi-filetype-csv"></i>
       <a href="data:text/csv;charset=utf-8,ID,LABEL,Melanoma of the Skin,Lung & Bronchus,Prostate,Breast,Colorectal" download="data/coloradoCancerTypesByCounty_2014_18.csv">
-      <img src="assets/filetype-csv.svg" alt="" height="1.5%"  width="1.5%" role="img">
-    </a>
-  </p>
-      
+        <img src="assets/filetype-csv.svg" alt="" height="1.5%"  width="1.5%" role="img">
+      </a>
+    </p>
   </footer>
 
   <script src="lib/simple-statistics.js"></script>
